@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="70dp"
+    android:layout_height="wrap_content"
+	android:padding="5dp"
+	android:layout_marginRight="10dp"
+    android:gravity="center"
+    android:background="@drawable/menu_edit_text_bg"
+    android:textColor="#ffffff"
+    android:selectAllOnFocus="true"
+    android:inputType="number" >
+    
+</EditText>

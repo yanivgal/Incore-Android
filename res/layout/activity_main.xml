@@ -1,0 +1,234 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FrameLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/body_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:id="@+id/camera_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </FrameLayout>
+
+            <ScrollView
+                android:id="@+id/json_response_holder"
+                android:layout_width="match_parent"
+                android:layout_height="640px"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/json_response"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/process_result_holder"
+                android:layout_width="match_parent"
+                android:layout_height="640px"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:id="@+id/process_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/menu_button_wrapper"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/action_bar_bg"
+                android:gravity="center"
+                android:onClick="menu"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/menu_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:src="@drawable/menu" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/click_to_capture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/action_bar_bg"
+                android:gravity="center"
+                android:onClick="clickToCapture"
+                android:orientation="vertical"
+                android:paddingRight="50dp" >
+
+                <ImageView
+                    android:id="@+id/aperture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/aperture" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/confirm_or_retake"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:id="@+id/retake_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/action_bar_bg"
+                    android:gravity="center"
+                    android:onClick="retakePicture"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/retake"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/retake" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/confirm_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/action_bar_bg"
+                    android:gravity="center"
+                    android:onClick="confirmPicture"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/confirm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/confirm" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/draw_results"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/menu_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:background="@drawable/action_bar_bg"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:padding="20dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <include
+                    android:id="@+id/min_radius_input"
+                    layout="@layout/menu_edit_text" />
+
+                <include
+                    android:id="@+id/min_radius_textView"
+                    layout="@layout/menu_text_view" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <include
+                    android:id="@+id/max_radius_input"
+                    layout="@layout/menu_edit_text" />
+
+                <include
+                    android:id="@+id/max_radius_textView"
+                    layout="@layout/menu_text_view" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <include
+                    android:id="@+id/sensitivity_input"
+                    layout="@layout/menu_edit_text" />
+
+                <include
+                    android:id="@+id/sensitivity_textView"
+                    layout="@layout/menu_text_view" />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <include
+                    android:id="@+id/host_input"
+                    layout="@layout/menu_edit_text" />
+
+                <include
+                    android:id="@+id/host_textView"
+                    layout="@layout/menu_text_view" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
